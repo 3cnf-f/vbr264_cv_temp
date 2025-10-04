@@ -54,7 +54,7 @@ def g_cv_doc_text_detect(file_contents, api_key):
 
     return all_word_data
 
-def g_wordlist_draw_boxes(google_doc_word_list,cv2_img):
+def  box_around_words(google_doc_word_list,cv2_img):
     for word in google_doc_word_list:
         vertices = word["bounding_box"]
         word_text = word["word"]
