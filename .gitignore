@@ -1,3 +1,8 @@
+#media files
+*.mp4
+*.mov
+*.avi
+*.png
 # Byte-compiled / optimized / DLL files
 __pycache__/
 *.py[codz]
