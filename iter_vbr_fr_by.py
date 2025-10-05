@@ -6,7 +6,7 @@ import json
 import re
 
 # video_basename = "20250924_145147" 145147 is the video basename
-video_basename = "144850"
+video_basename = "145147"
 
 in_ffprobe_json_filepath = f"../{video_basename}/{video_basename}_vfr.json"
 in_frames_basename = f"{video_basename}_vfr_"
@@ -36,11 +36,15 @@ vid_timestamplist=l_ffj.get_timestamps_from_frames(in_ffprobe_json_filepath)
 framelist=l_ffj.framelist_from_timespan(-1,-1,framerate,vid_timestamplist)
 
 # now we check that all the frames we need to ocr are in the png_files list
-for frame in framelist:
-  if frame["vbr_frameno"] not in [f["frame_from_filename"] for f in pattern_matching_png_files]:
-    print(f"missing frame {frame['vbr_frameno']}")
-    exit(1)
+for ii,frame in enumerate(framelist):
+    print(ii,frame["vbr_frameno"],frame["pts_time"])
+    if frame["vbr_frameno"] not in [f["frame_from_filename"] for f in pattern_matching_png_files]:
+        print(f"missing frame {frame['vbr_frameno']}")
 
+
+
+# debugging : missmatch bewwen suggested frames and actual frames
+exit()
 # make iterator for send frames to google
 #first test for 10th frame in our framlist
 testno=3
@@ -68,11 +72,11 @@ for ii,frame in enumerate(framelist):
     image_data = f.read()
 
   annot_list=l_gocr.g_cv_doc_text_detect(image_data, api_key)
-  print(f"{str(ii+1)} of {len(framelist)} done.}" )
+  print(f"{str(ii+1)} of {len(framelist)} done." ) 
   outjson[frame_no]={}
   outjson[frame_no]["google_ocr"]=annot_list
   itertimes=itertimes-1
-  if itertimes==0 amd ii<len(framelist)-1:
+  if itertimes==0 and ii<len(framelist)-1:
       a=input(f"how many more times?/x for stop/enter for 1")
       if a!="" and a.isdigit():
           itertimes=int(a)

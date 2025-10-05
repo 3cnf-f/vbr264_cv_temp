@@ -8,7 +8,7 @@ import sys
 import shutil
 
 # video_basename = "20250924_145147" 145147 is the video basename
-video_basename = "143800"
+video_basename = "145147"
 
 in_ffprobe_json_filepath = f"../{video_basename}/{video_basename}_vfr.json"
 in_frames_basename = f"{video_basename}_vfr_"
