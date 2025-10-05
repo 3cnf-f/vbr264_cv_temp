@@ -4,8 +4,10 @@
 * 143800 143827 144850 have passed frame selection google ocr, png copy and json correction
 * 145147 gets stuck because a frame is missing. see iter_vbr_fr_by.py for comments
 
-
-
+basename_vfr.json - from ffprobe
+basename_vfr_%06d.png - from ffmpeg
+basename_vfr__vbr_ocr.json - from iter_vbr_fr_by.py
+basename_new_ocr.json - from iter_correct_goog_ocr.py
 
 # vbr264_cv_temp
 Get all non non identical frames for vbr (variable bitrate video).
