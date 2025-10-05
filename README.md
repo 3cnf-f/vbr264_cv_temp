@@ -56,3 +56,6 @@ then a json with our resultsare saved to:
 
 the outpu
 -----------------ej klar
+143800 143827 144850 have passed frame selection google ocr, png copy and json correction
+145147 gets stuck because a frame is missing. see iter_vbr_fr_by.py for comments
+
